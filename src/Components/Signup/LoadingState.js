@@ -1,6 +1,6 @@
 import React from "react";
-import PuffLoader from "react-spinners/PuffLoader";
-const LoadingState = () => {
+import ClipLoader from "react-spinners/ClipLoader";
+const Loading = () => {
 	return (
 		<div
 			style={{
@@ -14,10 +14,10 @@ const LoadingState = () => {
 				position: "fixed",
 			}}>
 			<div>
-				<PuffLoader color='#fff' />
+				<ClipLoader color='#fff' />
 			</div>
 		</div>
 	);
 };
 
-export default LoadingState;
+export default Loading;

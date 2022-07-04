@@ -23,7 +23,7 @@ const Header = () => {
     <img src ={userdata.avatar}/>
 </Logo>
 </Link>
-<Butts onclick={()=>{
+<Butts onClick={()=>{
     dispatch(signoutuser())
 }}> 
     Logout

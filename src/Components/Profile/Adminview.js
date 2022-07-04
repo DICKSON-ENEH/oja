@@ -15,11 +15,11 @@ const Adminview = () => {
     const dispatch = useDispatch()
     const user = useSelector((state)=>state.recentuser)
     const mem = useSelector((state)=>state.allorders)
-   const [alldata, setAlldata]= useState([])
+  
 
 
     const getalldata=async()=>{
-        const url = `https://ojabackend.herokuapp.com/api/orders/allorders`
+        const url = `https://ojabackend.herokuapp.com/api/orders/${user._id}/allorders`
 
         const config={
             headers:{
@@ -27,7 +27,8 @@ const Adminview = () => {
             }
         }
         await axios.get(url, config).then((res)=>{
-          dispatch(getevery(res.data.data.orders))
+          dispatch(getevery(res.data.data))
+          console.log(res.data.data)
         }).catch((error)=>{
             console.log(error)
         })

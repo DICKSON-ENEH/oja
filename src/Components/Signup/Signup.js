@@ -7,10 +7,16 @@ import * as yup from "yup"
 import {useForm} from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import axios from "axios"
-// import swal from "sweetalert2"
+import swal from "sweetalert2"
+import ClipLoader from "react-spinners/ClipLoader"
+import Loading from "./LoadingState"
 
 const SignUp = () => {
 	const navigate = useNavigate()
+	const [loading, setLoading] =useState(false)
+	const toggleLoad =()=>{
+		setLoading(true)
+	}
 	const [image , setImage]= useState(pp)
     const [avatar , setAvatar] = useState("")
 	const formSchema = yup.object().shape({
@@ -50,9 +56,22 @@ const config = {
 	"content-type" : "multipart/form-data"
 }
 await axios.post(url, formData, config).then((res)=>{
-	console.log(res)
+	// setLoading(false)
+
+	swal.fire({
+		title: " Success",
+		text: "proceed to signin",
+		icon: "success",
+	});
+
 }).catch((error)=>{
-	console.log(error.message)
+	swal({
+		title: error.response.data.msg,
+		text: "",
+		icon: "error",
+		button: "ok",
+	})
+	setLoading(false);
 })
 	reset()
 	navigate("/signup/signin")
@@ -72,7 +91,9 @@ await axios.post(url, formData, config).then((res)=>{
 						/>
 					</ImageHolder>
 
-					<Form onSubmit={onSubmits}  type="multipart/form-data">
+					<Form onSubmit={onSubmits} 
+					
+					type="multipart/form-data">
 						<Holder>
 							{/* <Label>User Name</Label> */}
 							<Input placeholder="fullname" 
@@ -119,13 +140,19 @@ await axios.post(url, formData, config).then((res)=>{
 							</Error>
 						</Holder>
 
-						<Button type="submit">Register</Button>
+						<Button type="submit"
+						// onClick={(e)=>{
+						// 	toggleLoad()
+						// 	 e.preventDefault()
+						// 	}}
+						>Register</Button>
 						<Div>
 							Already have an Account? <Span to="signin">Sign in Here</Span>
 						</Div>
 					</Form>
 				</Card>
 			</Wrapper>
+			{loading ? <Loading loading={loading} /> : null}
 		</Container>
 	);
 };

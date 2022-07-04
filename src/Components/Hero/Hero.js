@@ -2,9 +2,10 @@ import React from 'react'
 import styled from "styled-components"
 import Header from '../Header/Header'
 import {useSelector} from "react-redux"
+import {Link} from "react-router-dom"
 
 const Hero = () => {
-  const userdata = useSelector((state)=>state.currentUser)
+  const userdata = useSelector((state)=>state.recentuser)
   return (
     <Container>
         <Wrapper>
@@ -17,11 +18,26 @@ Order For Anything Easily And Quickly
 
 </Down>
 {userdata?
+<Link to="/create">
   <Butts>
  place order +
-</Butts>:<Butts>
+</Butts>
+
+</Link>
+:
+<Link to ="signup/signin">
+<Butts>
   Get Started
 </Butts>
+</Link>
+}
+
+{userdata.isAdmin?
+ <Link to="/adminview">
+ <Butts style={{marginLeft:"20px"}}>
+view orders
+</Butts>
+</Link>: null
 }
 
 
