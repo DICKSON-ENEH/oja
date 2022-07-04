@@ -79,10 +79,13 @@ const Profile = () => {
                  <Quantyity>
                        Bal:{props.balance}
                     </Quantyity>
-                 <Quantyity>
-                        {moment(props.createdAt).format("LT")}
+                   
+                 
+               
+                    <Quantyity>
+                        {moment(props.createdAt).format("YYYY-MM-DD HH:MM")}
                     </Quantyity>
-                    
+                 
                 </Hold>
                 </Cardwrap>
               </Card>
@@ -199,17 +202,20 @@ display: flex;
 width: 100%;
 justify-content:center;
 align-items:center ;
+/* background:blue; */
 /* flex-direction:column ; */
 `
 const Wrapper = styled.div`
 width:90%;
 display: flex;
-
+/* background:green; */
 justify-content:space-between;
 flex-direction: column ;
 align-items:center ;
 margin-top:40px ;
-@media(max-width:1204px){
+/* background:red
+; */
+@media(max-width:1200px){
 align-items:center ;
 }
 /* align-items:center ; */
@@ -220,6 +226,8 @@ color:green;
 font-size:4rem;
 font-weight:800;
 margin-top:30px;
+text-align:center;
+/* background:yellow; */
 @media(max-width:600px){
     font-size:2.5rem; 
 }

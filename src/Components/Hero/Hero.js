@@ -31,14 +31,16 @@ Order For Anything Easily And Quickly
 </Butts>
 </Link>
 }
-
-{userdata.isAdmin?
+ 
+{/* {userdata.isAdmin?
+<span  style={{margin:"20px"}}>
  <Link to="/adminview">
- <Butts style={{marginLeft:"20px"}}>
+ <Butts>
 view orders
 </Butts>
-</Link>: null
-}
+</Link>
+</span>: null
+} */}
 
 
             </Left>

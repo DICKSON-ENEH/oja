@@ -54,7 +54,7 @@ navigate("/dashboard")
 				<div style={{color:"green",
 			fontWeight:"800",
 			fontSize:"2.5rem",
-			marginBottom:"20px"
+			marginBottom:"20px",
 			}}>Fill in your Order</div>
 				<Card>
                     
@@ -255,12 +255,13 @@ const Card = styled.div`
 `;
 
 const Wrapper = styled.div`
-	width: 100%;
+	/* width: 100%; */
 	height: 100%;
 	justify-content: center;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	/* background:green; */
 `;
 
 const Container = styled.div`
@@ -272,6 +273,7 @@ justify-content: center;
 align-items:center ;
 height: 100vh;
 width:100%;
+/* background:blue; */
 /* height:100vh; */
 
 `;

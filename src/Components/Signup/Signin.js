@@ -204,7 +204,21 @@ const Card = styled.div`
 	justify-content: center;
 	padding: 20px 0;
 	flex-direction: column;
+	@media(max-width:500px){
+        width:350px;
+	min-height: 350px;
 
+    }
+    @media(max-width:400px){
+        width:320px;
+	min-height: 350px;
+
+    }
+    @media(max-width:330px){
+        width:300px;
+	/* min-height: 250px; */
+
+    }
 `;
 
 const Wrapper = styled.div`

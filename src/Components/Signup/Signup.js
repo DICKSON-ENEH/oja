@@ -65,13 +65,13 @@ await axios.post(url, formData, config).then((res)=>{
 	});
 
 }).catch((error)=>{
-	swal({
-		title: error.response.data.msg,
-		text: "",
-		icon: "error",
-		button: "ok",
-	})
-	setLoading(false);
+	// swal({
+	// 	title: error.response.data.,
+	// 	text: "",
+	// 	icon: "error",
+	// 	button: "ok",
+	// })
+	// setLoading(false);
 })
 	reset()
 	navigate("/signup/signin")

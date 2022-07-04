@@ -33,9 +33,9 @@ const Header = () => {
 <Link to ="/signup" style={{textDecoration:"none",
 color:"#fff"
 }}>
-<Butts >
+<Buttz>
     Register
-</Butts>
+</Buttz>
 </Link>
             </Navigations>}
         </Wrapper>
@@ -65,6 +65,28 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px
     font-size:14px ;
 }
 `
+const Buttz = styled.button`
+background:green;
+width:100px;
+display:flex;
+justify-content: center;
+align-items:center ;
+/* height:20px ; */
+padding:10px;
+color:#fff;
+outline:none;
+border:none;
+border-radius:3px ;
+font-family:magra ;
+font-size:18px ;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+;
+@media(max-width:800px){
+    width:100px;
+    font-size:14px ;
+    margin-left:35px
+}
+`
 const Container = styled.div`
 width:100%;
 height:70px;
@@ -75,7 +97,7 @@ justify-content:center ;
 box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 position:fixed ;
 z-index:100 ;
-background:#fff ;
+background:#fff;
 
 `
 const Wrapper = styled.div`
@@ -108,6 +130,7 @@ display:flex ;
 width:200px;
 justify-content:space-between ;
 align-items:center ;
+/* background:green; */
 @media(max-width:450px){
 width:130px;
 }
