@@ -35,7 +35,7 @@ await axios.post(url,{email, password}).then((res)=>{
 	dispatch(signinuser(res.data.data))
     swal.fire({
 		title: " Success",
-		text: "proceed to signin",
+		text: "welcome to Oja",
 		icon: "success",
 	});
 }).catch((err)=>{
