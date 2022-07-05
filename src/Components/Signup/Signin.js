@@ -28,7 +28,7 @@ resolver:yupResolver(formSchema)
 })
 const onSubmit = handleSubmit(async (val)=>{
 const {email , password} = val
-console.log(val)
+// console.log(val)
 
 const url = "https://ojabackend.herokuapp.com/api/user/signin"
 await axios.post(url,{email, password}).then((res)=>{
