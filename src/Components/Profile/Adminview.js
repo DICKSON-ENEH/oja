@@ -4,7 +4,7 @@ import {BsFillHeartFill} from "react-icons/bs"
 import {useSelector, useDispatch} from "react-redux"
 import {Link} from "react-router-dom"
 import axios from "axios"
-import {getevery} from "../Global/Globalstste"
+import {getevery, addorder} from "../Global/Globalstste"
 import moment from "moment"
 
 const Adminview = () => {
@@ -15,31 +15,51 @@ const Adminview = () => {
     const dispatch = useDispatch()
     const user = useSelector((state)=>state.recentuser)
     const mem = useSelector((state)=>state.allorders)
+    const ordr = useSelector((state)=>state.orders)
   
 
 
     const getalldata=async()=>{
-        const url = `https://ojabackend.herokuapp.com/api/orders/${user._id}/allorders`
+        if(user.isAdmin){
+            const url = `https://ojabackend.herokuapp.com/api/orders/${user._id}/allorders`
 
-        const config={
-            headers:{
-                authorization:`deekie ${user.token}`
+            const config={
+                headers:{
+                    authorization:`deekie ${user.token}`
+                }
             }
+            await axios.get(url, config).then((res)=>{
+              dispatch(getevery(res.data.data))
+            //   console.log(res.data.data)
+            }).catch((error)=>{
+                console.log(error)
+            })
+        }else{
+            const url = `https://ojabackend.herokuapp.com/api/orders/${user._id}/oneorder`
+
+            const config={
+                headers:{
+                    authorization:`deekie ${user.token}`
+                }
+            }
+            await axios.get(url, config).then((res)=>{
+                dispatch(addorder(res.data.data.orders))
+            //    console.log(res.data.data.orders)
+            }).catch((error)=>{
+                console.log(error)
+            })
         }
-        await axios.get(url, config).then((res)=>{
-          dispatch(getevery(res.data.data))
-          console.log(res.data.data)
-        }).catch((error)=>{
-            console.log(error)
-        })
     }
+        
     useEffect(()=>{
         getalldata()
     }, [])
   return (
     <Container>
         <Wrapper>
+            
             <Head>
+               
             <Top>
               welcome Admin,
             </Top>
@@ -49,11 +69,11 @@ const Adminview = () => {
             </Create>
             </Link>
             </Head>
-
+  
           <Base>
           {
             mem?.map((props)=>(
-                <Card>
+                <Card key={props.id}>
                 <Cardwrap>
                     <Image src={props.image}/>
                 
@@ -81,8 +101,9 @@ const Adminview = () => {
                  <Quantyity>
                        Bal:{props.balance}
                     </Quantyity>
-                 <Quantyity>
-                        {moment(props.createdAt).format("LT")}
+                
+                    <Quantyity>
+                        {moment(props.createdAt).format("YYYY-MM-DD HH:MM")}
                     </Quantyity>
                     
                 </Hold>

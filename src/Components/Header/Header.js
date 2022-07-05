@@ -131,8 +131,11 @@ width:200px;
 justify-content:space-between ;
 align-items:center ;
 /* background:green; */
-@media(max-width:450px){
-width:130px;
+@media(max-width:500px){
+width:180px;
+}
+@media(max-width:400px){
+width:120px;
 }
 
 `

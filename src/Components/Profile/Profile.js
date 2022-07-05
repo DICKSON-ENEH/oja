@@ -51,7 +51,7 @@ const Profile = () => {
           <Base>
           {
             mem?.map((props)=>(
-                <Card>
+                <Card key={props.id}>
                 <Cardwrap>
                     <Image src={props.image}/>
                 

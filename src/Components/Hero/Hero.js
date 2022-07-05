@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from "styled-components"
 import Header from '../Header/Header'
 import {useSelector} from "react-redux"
 import {Link} from "react-router-dom"
-
+import Aos from "aos"
+import "aos/dist/aos.css"
 const Hero = () => {
   const userdata = useSelector((state)=>state.recentuser)
+
+  useEffect(()=>{
+Aos.init=({duration:1500})
+  }, [])
   return (
     <Container>
         <Wrapper>
@@ -18,12 +23,21 @@ Order For Anything Easily And Quickly
 
 </Down>
 {userdata?
+<Div>
 <Link to="/create">
+  
   <Butts>
  place order +
 </Butts>
+  
 
 </Link>
+<Link to="/adminview">
+<Butts>
+view orders
+</Butts>
+</Link>
+</Div>
 :
 <Link to ="signup/signin">
 <Butts>
@@ -32,15 +46,8 @@ Order For Anything Easily And Quickly
 </Link>
 }
  
-{/* {userdata.isAdmin?
-<span  style={{margin:"20px"}}>
- <Link to="/adminview">
- <Butts>
-view orders
-</Butts>
-</Link>
-</span>: null
-} */}
+
+
 
 
             </Left>
@@ -51,6 +58,16 @@ view orders
 }
 
 export default Hero
+
+const Div = styled.div`
+display: flex;
+justify-content:space-between;
+width:400px;
+@media(max-width:500px){
+  flex-direction:column ;
+  align-items:center
+}
+`
 const Butts = styled.button`
 padding:15px 40px;
 border-radius:5px;
@@ -60,7 +77,12 @@ outline:none ;
 margin-top:10px ;
 cursor:pointer ;
 color:#fff;
-background:green
+background:green;
+:hover{
+  transition:all 300ms ;
+  transform :scale(1.05);
+  cursor: pointer;
+}
 `
 const Down = styled.div`
 font-size:3rem ;

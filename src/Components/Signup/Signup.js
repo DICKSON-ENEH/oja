@@ -56,13 +56,13 @@ const config = {
 	"content-type" : "multipart/form-data"
 }
 await axios.post(url, formData, config).then((res)=>{
-	// setLoading(false)
-
+toggleLoad()
 	swal.fire({
 		title: " Success",
 		text: "proceed to signin",
 		icon: "success",
 	});
+	setLoading(false)
 
 }).catch((error)=>{
 	// swal({
@@ -79,6 +79,7 @@ await axios.post(url, formData, config).then((res)=>{
 	return (
 		<Container>
 			<Wrapper>
+			
 				<Card >
 					<ImageHolder>
 						<Image src={image} />

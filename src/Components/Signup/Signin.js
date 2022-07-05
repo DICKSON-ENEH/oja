@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect}from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as yup from "yup"
@@ -8,6 +8,9 @@ import {yupResolver} from "@hookform/resolvers/yup"
 import axios from "axios"
 import { useDispatch } from "react-redux";
 import {signinuser} from "../Global/Globalstste"
+import swal from "sweetalert2"
+import Aos from "aos";
+import "aos/dist/aos.css"
 
 
 
@@ -30,12 +33,19 @@ console.log(val)
 const url = "https://ojabackend.herokuapp.com/api/user/signin"
 await axios.post(url,{email, password}).then((res)=>{
 	dispatch(signinuser(res.data.data))
-    console.log(res)
+    swal.fire({
+		title: " Success",
+		text: "proceed to signin",
+		icon: "success",
+	});
 }).catch((err)=>{
     console.log(err)
 })
 reset() 
 navigate("/dashboard")
+})
+useEffect(()=>{
+	Aos.init=({duration:1500})
 })
 	return (
 		<Container>
@@ -45,7 +55,7 @@ navigate("/dashboard")
 			fontSize:"2.5rem",
 			marginBottom:"20px"
 			}}>Oja</div>
-				<Card>
+				<Card >
                    <div style={{ 
 				display:"flex",
 				justifyContent:"center",

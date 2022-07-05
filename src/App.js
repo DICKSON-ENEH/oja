@@ -8,6 +8,7 @@ import SignIn from "./Components/Signup/Signin";
 import Profile from "./Components/Profile/Profile";
 import Create from "./Components/Create/Create";
 import PrivateRoute from "./Components/Global/PrivateRoute";
+import Prouteadmin from "./Components/Global/Prouteadmin";
 import Adminview from "./Components/Profile/Adminview";
 const App=()=> {
   return (
@@ -32,9 +33,9 @@ const App=()=> {
         <Create/>
         </PrivateRoute>
         }/>
-        <Route path ="/adminview" element={<PrivateRoute>
+        <Route path ="/adminview" element={<Prouteadmin>
       <Adminview/>
-     </PrivateRoute>}/>
+     </Prouteadmin>}/>
       </Routes>
       </BrowserRouter>
      
