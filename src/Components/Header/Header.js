@@ -86,6 +86,11 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px
     font-size:14px ;
     margin-left:35px
 }
+@media(max-width:500px){
+    width:100px;
+    font-size:14px ;
+    margin-left:20px
+}
 `
 const Container = styled.div`
 width:100%;
