@@ -9,6 +9,7 @@ import moment from "moment"
 
 const Adminview = () => {
     const [toggle, setToggle]= useState(false)
+    const [vieworder, setVieworder] = useState([])
     const changer =()=>{
         setToggle(!toggle)
     }
@@ -29,12 +30,13 @@ const Adminview = () => {
                 }
             }
             await axios.get(url, config).then((res)=>{
-              dispatch(getevery(res.data.data))
-            //   console.log(res.data.data)
+            //   dispatch(getevery(res.data.data))
+              console.log(res.data.data)
+            setVieworder(res.data.data)
             }).catch((error)=>{
                 console.log(error)
             })
-        }else{
+        }else{ 
             const url = `https://ojabackend.herokuapp.com/api/orders/${user._id}/oneorder`
 
             const config={
@@ -72,7 +74,7 @@ const Adminview = () => {
   
           <Base>
           {
-            mem?.map((props)=>(
+            vieworder?.map((props)=>(
                 <Card key={props.id}>
                 <Cardwrap>
                     <Image src={props.image}/>

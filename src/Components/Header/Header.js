@@ -1,13 +1,18 @@
 import React, {useState} from 'react'
 import styled from "styled-components"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { useSelector , useDispatch} from 'react-redux'
 import { signoutuser } from '../Global/Globalstste'
 
 const Header = () => {
     // const [user, setUser]= useState(false)
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const userdata = useSelector((state)=>state.recentuser)
+    const logOut = () => {
+        dispatch(signoutuser());
+        navigate("/");
+      };
   return (
     <Container>
         <Wrapper>
@@ -24,7 +29,7 @@ const Header = () => {
 </Logo>
 </Link>
 <Butts onClick={()=>{
-    dispatch(signoutuser())
+    logOut()
 }}> 
     Logout
 </Butts>
