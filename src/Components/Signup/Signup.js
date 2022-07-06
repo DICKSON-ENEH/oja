@@ -55,8 +55,8 @@ formData.append("avatar", avatar)
 const config = {
 	"content-type" : "multipart/form-data"
 }
-toggleLoad()
 
+toggleLoad()
 await axios.post(url, formData, config).then((res)=>{
 	swal.fire({
 		title: " Success",
