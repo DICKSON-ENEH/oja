@@ -22,7 +22,7 @@ const SignUp = () => {
 	const formSchema = yup.object().shape({
     fullname:yup.string().required("this field cannot be empty"),
     email:yup.string().email().required("this field cannot be empty"),
-    phone:yup.string().required("this field cannot be empty"),
+    phone:yup.number().required("this field cannot be empty"),
 	password:yup.string().required("this field cannot be empty"),
 	confirm:yup.string().oneOf([yup.ref("password"), null], "password must match")
 	})
@@ -108,7 +108,7 @@ await axios.post(url, formData, config).then((res)=>{
 							{/* <Label>User Name</Label> */}
 							<Input placeholder="phone" 
 							{...register("phone")}
-							
+							type="number"
 							/>
 							<Error>{errors?.phone?.message}</Error>
 						</Holder>
