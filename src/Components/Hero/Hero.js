@@ -3,14 +3,10 @@ import styled from "styled-components"
 import Header from '../Header/Header'
 import {useSelector} from "react-redux"
 import {Link} from "react-router-dom"
-import Aos from "aos"
-import "aos/dist/aos.css"
+
 const Hero = () => {
   const userdata = useSelector((state)=>state.recentuser)
 
-  useEffect(()=>{
-Aos.init=({duration:1500})
-  }, [])
   return (
     <Container>
         <Wrapper>
@@ -63,8 +59,10 @@ const Div = styled.div`
 display: flex;
 justify-content:space-between;
 width:400px;
+/* background:red; */
 @media(max-width:500px){
   flex-direction:column ;
+  width:300px;
   align-items:center
 }
 `

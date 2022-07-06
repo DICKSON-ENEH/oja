@@ -270,6 +270,7 @@ const Card = styled.div`
 const Wrapper = styled.div`
 	/* width: 100%; */
 	height: 100%;
+	margin-top:100px ;
 	justify-content: center;
 	display: flex;
 	align-items: center;
@@ -284,7 +285,7 @@ const Container = styled.div`
 display:flex ;
 justify-content: center;
 align-items:center ;
-height: 100vh;
+height: 100%;
 width:100%;
 /* background:blue; */
 /* height:100vh; */
