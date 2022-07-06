@@ -1,4 +1,4 @@
-import React , {useEffect}from "react";
+import React , {useEffect, useState}from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as yup from "yup"
@@ -11,11 +11,17 @@ import {signinuser} from "../Global/Globalstste"
 import swal from "sweetalert2"
 import Aos from "aos";
 import "aos/dist/aos.css"
+import Loading from "./LoadingState"
 
 
 
 
 const SignIn = () => {
+	const [loading, setLoading]= useState(false)
+
+	const toggleLoad=()=>{
+		setLoading(true)
+	}
     const navigate= useNavigate()
 	const dispatch= useDispatch()
 	const formSchema = yup.object().shape({
@@ -31,6 +37,7 @@ const {email , password} = val
 // console.log(val)
 
 const url = "https://ojabackend.herokuapp.com/api/user/signin"
+toggleLoad()
 await axios.post(url,{email, password}).then((res)=>{
 	dispatch(signinuser(res.data.data))
     swal.fire({
@@ -39,7 +46,13 @@ await axios.post(url,{email, password}).then((res)=>{
 		icon: "success",
 	});
 }).catch((err)=>{
-    console.log(err)
+  
+	swal.fire({
+		title: "failed",
+		text: "error",
+		icon: "failed",
+	});
+	setLoading(false)
 })
 reset() 
 navigate("/dashboard")
@@ -50,6 +63,7 @@ useEffect(()=>{
 	return (
 		<Container>
 			<Wrapper>
+				{loading? <Loading/>:null}
 				<div style={{color:"green",
 			fontWeight:"800",
 			fontSize:"2.5rem",

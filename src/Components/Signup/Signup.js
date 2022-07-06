@@ -8,7 +8,7 @@ import {useForm} from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import axios from "axios"
 import swal from "sweetalert2"
-import ClipLoader from "react-spinners/ClipLoader"
+// import ClipLoader from "react-spinners/ClipLoader"
 import Loading from "./LoadingState"
 
 const SignUp = () => {
@@ -55,14 +55,15 @@ formData.append("avatar", avatar)
 const config = {
 	"content-type" : "multipart/form-data"
 }
-await axios.post(url, formData, config).then((res)=>{
 toggleLoad()
+
+await axios.post(url, formData, config).then((res)=>{
 	swal.fire({
 		title: " Success",
 		text: "proceed to signin",
 		icon: "success",
 	});
-	setLoading(false)
+	// setLoading(false)
 
 }).catch((error)=>{
 	// swal({
@@ -71,7 +72,7 @@ toggleLoad()
 	// 	icon: "error",
 	// 	button: "ok",
 	// })
-	// setLoading(false);
+	setLoading(false);
 })
 	reset()
 	navigate("/signup/signin")
@@ -79,8 +80,9 @@ toggleLoad()
 	return (
 		<Container>
 			<Wrapper>
+			{loading ? <Loading /> : null}
 			
-				<Card >
+			<Card >
 					<ImageHolder>
 						<Image src={image} />
 						<ImageLabel htmlFor="pix"><FiCamera/></ImageLabel>
@@ -153,7 +155,6 @@ toggleLoad()
 					</Form>
 				</Card>
 			</Wrapper>
-			{loading ? <Loading loading={loading} /> : null}
 		</Container>
 	);
 };

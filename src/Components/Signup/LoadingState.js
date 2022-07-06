@@ -4,7 +4,8 @@ const Loading = () => {
 	return (
 		<div
 			style={{
-				height: "100vh",
+				height: "100%",
+				minHeight:"100vh",
 				width: "100%",
 				background: "rgba(0,0,0,0.5)",
 				color: "#fff",
@@ -12,6 +13,7 @@ const Loading = () => {
 				justifyContent: "center",
 				alignItems: "center",
 				position: "fixed",
+				zIndex:"1000"
 			}}>
 			<div>
 				<ClipLoader color='#fff' />

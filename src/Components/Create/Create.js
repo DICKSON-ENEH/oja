@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as yup from "yup"
@@ -8,12 +8,19 @@ import {yupResolver} from "@hookform/resolvers/yup"
 import axios from "axios"
 import { useSelector } from "react-redux";
 import {signinuser} from "../Global/Globalstste"
+import Loading from "../Signup/LoadingState"
+
 
 
 
 
 const SignIn = () => {
     const navigate= useNavigate()
+    const [loading, setLoading]= useState(false)
+
+	const toggleLoad=()=>{
+        setLoading(true)
+    }
 const userdata = useSelector((state)=>state.recentuser)
 const id = userdata._id
 console.log(id)
@@ -39,11 +46,15 @@ const config={
 		authorization : `dee ${userdata.token}`
 	}
 }
+toggleLoad()
+
 await axios.post(url,val, config).then((res)=>{
 	
     console.log(res)
 }).catch((err)=>{
     console.log(err)
+	setLoading(false)
+
 })
 reset() 
 navigate("/dashboard")
@@ -51,6 +62,8 @@ navigate("/dashboard")
 	return (
 		<Container>
 			<Wrapper>
+            {loading? <Loading/>:null}
+
 				<div style={{color:"green",
 			fontWeight:"800",
 			fontSize:"2.5rem",

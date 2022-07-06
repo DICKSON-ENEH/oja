@@ -9,6 +9,7 @@ import moment from "moment"
 
 const Profile = () => {
     const [toggle, setToggle]= useState(false)
+   
     const changer =()=>{
         setToggle(!toggle)
     }
@@ -28,7 +29,6 @@ const Profile = () => {
         await axios.get(url, config).then((res)=>{
             dispatch(addorder(res.data.data.orders))
         }).catch((error)=>{
-            console.log(error)
         })
     }
     useEffect(()=>{
